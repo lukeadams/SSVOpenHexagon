@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
+#[[
 # Include SSVCmake.
 list(APPEND CMAKE_MODULE_PATH
     "${CMAKE_SOURCE_DIR}/../SSVCMake/cmake/modules/"
@@ -34,3 +35,4 @@ target_link_libraries(${PROJECT_NAME} ${LUA_LIBRARY})
 target_link_libraries(${PROJECT_NAME} ${ZLIB_LIBRARY})
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_SOURCE_DIR}/_RELEASE/)
+]]
