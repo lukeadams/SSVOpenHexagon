@@ -203,3 +203,7 @@ asanlogs
 /_RELEASE/uBYSWh65lfn028oL.oh20assets.tar.xz
 /_RELEASE/oh20assets.tar.xz
 /log.txt
+
+cpm-packages
+cpm-bin
+CMakeFiles
