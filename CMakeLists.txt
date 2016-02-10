@@ -23,10 +23,14 @@ include(${CPM_DIR}/CPM.cmake)
 #------------------------------------------------------------------------------
 # CPM Modules
 #------------------------------------------------------------------------------
+
+#SET(SSVDeps "SSVCMake;SSVEntitySystem;SSVLuaWrapper;SSVMenuSystem;SSVStart;SSVUtils;vrm_pp")
 SET(SSVDepsRoot "https://github.com/lukeadams/")
+#foreach(dep ${SSVDeps})
 CPM_AddModule("SSVCMake"
 	GIT_REPOSITORY "${SSVDepsRoot}SSVCMake"
 	USE_EXISTING_VER false
 	GIT_TAG "cpm")
 include(${CPM_KV_SOURCEDIR_MAP_SSVCMake}/cmake/modules/SSVCmake.cmake)
+#endforeach(dep)
 CPM_Finish()
