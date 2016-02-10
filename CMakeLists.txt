@@ -23,3 +23,10 @@ include(${CPM_DIR}/CPM.cmake)
 #------------------------------------------------------------------------------
 # CPM Modules
 #------------------------------------------------------------------------------
+SET(SSVDepsRoot "https://github.com/lukeadams/")
+CPM_AddModule("SSVCMake"
+	GIT_REPOSITORY "${SSVDepsRoot}SSVCMake"
+	USE_EXISTING_VER false
+	GIT_TAG "cpm")
+include(${CPM_KV_SOURCEDIR_MAP_SSVCMake}/cmake/modules/SSVCmake.cmake)
+CPM_Finish()
