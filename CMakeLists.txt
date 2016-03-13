@@ -19,7 +19,6 @@ CPM_AddModule("SSVCMake"
 	GIT_REPOSITORY "${SSVDepsRoot}SSVCMake"
 	GIT_TAG "cpm")
 SET(CMAKE_MODULE_PATH ${CPM_KV_SOURCEDIR_MAP_SSVCMake}/cmake/modules ${CMAKE_MODULE_PATH})
-#include(SSVCMake)
 
 CPM_AddModule("SSVEntitySystem"
 	GIT_REPOSITORY "${SSVDepsRoot}SSVEntitySystem"
@@ -66,15 +65,15 @@ target_link_libraries(${PROJECT_NAME} ${LUA_LIBRARIES} ${ZLIB_LIBRARIES} ${SFML_
 #Downloads assets for SSVOH
 add_custom_target("fetch-assets"
 	#Probably should use GH releases as zip..? Anyways, nc skips if already 'dled
-	COMMAND wget --quiet --directory-prefix="./cache/_RELEASE-dl" -r -nH -nc --cut-dirs=4 --no-parent -e robots="off" --reject="*index.html*" "http://vittorioromeo.info/Misc/Linked/OHResources/Testing/"
+	COMMAND wget --quiet --directory-prefix="${CMAKE_SOURCE_DIR}/cache/_RELEASE-dl" -r -nH -nc --cut-dirs=4 --no-parent -e robots="off" --reject="*index.html*" "http://vittorioromeo.info/Misc/Linked/OHResources/Testing/"
 )
 
 #Copies assets to build dir
 #Copy assets to 
 add_custom_target("copy-assets"
 	DEPENDS "fetch-assets"
-	COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/cache/_RELEASE-dl $<TARGET_FILE_DIR:${PROJECT_NAME}>
-	COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/cache/_RELEASE-dl $<TARGET_FILE_DIR:${PROJECT_NAME}>
+	COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/_RELEASE $<TARGET_FILE_DIR:${PROJECT_NAME}> #Vanilla assets
+	COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/cache/_RELEASE-dl $<TARGET_FILE_DIR:${PROJECT_NAME}> #Downloaded assets
 )
 
 
