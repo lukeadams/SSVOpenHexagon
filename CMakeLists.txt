@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 project(SSVOpenHexagon)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/test")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/test")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 #set(CMAKE_CXX_FLAGS "-std=c++14 -w -fmax-errors=1")
 #set(CMAKE_CXX_FLAGS "-std=c++14 -fmax-errors=1") #GCC
@@ -72,8 +72,8 @@ add_custom_target("fetch-assets"
 #Copy assets to 
 add_custom_target("copy-assets"
 	DEPENDS "fetch-assets"
-	COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/_RELEASE $<TARGET_FILE_DIR:${PROJECT_NAME}> #Vanilla assets
-	COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/cache/_RELEASE-dl $<TARGET_FILE_DIR:${PROJECT_NAME}> #Downloaded assets
+	COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/_RELEASE $<TARGET_FILE_DIR:${PROJECT_NAME}> #Vanilla assets
+	COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/cache/_RELEASE-dl $<TARGET_FILE_DIR:${PROJECT_NAME}> #Downloaded assets
 )
 
 
